@@ -5,6 +5,8 @@ import com.willokans.fullstackbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1")
 public class UserController {
@@ -17,9 +19,10 @@ public class UserController {
         return userRepository.save(newUser);
     }
 
-//    @DeleteMapping("/user/{id}")
-//    public User deleteUser(@PathVariable String id){
-//        return userRepository.delete();
-//    }
+
+    @GetMapping("/users")
+    List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
 
 }
